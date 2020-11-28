@@ -1,23 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+// import logo from './logo.svg';
+// import './App.css';
+import Home from './page/Home';
+import Login from "./page/Login";
+import React, { useEffect } from "react";
+import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import PrivateRoute from "./routes/privateRoute";
 
 function App() {
+  const dispatch = useDispatch();
+
+  //check localstorage
+  useEffect(() => {
+    const userName = localStorage.getItem("userStatus");
+
+
+    //ngecek validitas localstorage, disimpan dalam bentuk token
+
+    dispatch({
+      type: "CHANGE_USER_LOGIN_STATUS",
+      payload: {
+        loginStatus: userName,
+      },
+    });
+
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+     <Router>
+        <Switch>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <PrivateRoute path="/" exact>
+            <Home />
+          </PrivateRoute>
+        </Switch>
+      </Router>
     </div>
   );
 }

@@ -7,6 +7,7 @@ import { Container, Row, Col, CardDeck, Button, Modal } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import swal from "sweetalert";
 
+
 export default function Home() {
   const dispatch = useDispatch();
   // const [show, setShow] = useState(false);
@@ -50,6 +51,7 @@ export default function Home() {
   }
   return (
     <>
+   
       <Container>
         <h1>Form Input Barang</h1>
         <Button onClick={handleLogout} variant="danger">Logout</Button>

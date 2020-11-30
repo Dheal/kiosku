@@ -14,7 +14,8 @@ const tokoReducer = (state=initialState, action)=>{
             case "DEL_PRODUCT":
             return {
                 ...state,
-                products: state.products.filter((product,index)=>index !== action.payload)
+                products: state.products.filter((product,index)=>index !== action.payload),
+                totalHarga: state.totalHarga - (action.payload)
             }
         
 

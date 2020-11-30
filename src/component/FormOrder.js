@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import { useDispatch, connect } from "react-redux";
 import { Button } from "react-bootstrap";
+import swal from "sweetalert"
 
 const FormOrder = (props) => {
   const [barang, setBarang] = useState("");
@@ -20,6 +21,7 @@ const FormOrder = (props) => {
   };
 
   const simpan = (event) => {
+    swal("Pesanan berhasil ditambahkan!", "Lanjutkan Belanja", "success");
     event.preventDefault();
     props.addProduct(barang, quantity, price);
 
